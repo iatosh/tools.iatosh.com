@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light dark;
   --bg: #f5f7fb;
   --card: #ffffff;
   --ink: #18202b;
@@ -12,6 +13,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --bg: #11151c;
     --card: #1a2029;
     --ink: #e8ecf2;
@@ -38,6 +40,7 @@ body {
 }
 
 a { color: inherit; }
+a, button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .top {
@@ -57,18 +60,27 @@ main {
   width: 100%;
   max-width: 1040px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: clamp(2rem, 8vw, 5rem) 16px 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .hero {
-  padding: clamp(2.5rem, 8vw, 5rem) 0 clamp(2rem, 5vw, 3rem);
+  padding-bottom: 2rem;
   text-align: center;
 }
 .hero h1 {
   margin: 0;
   font-size: clamp(1.75rem, 4.5vw, 2.5rem);
   line-height: 1.3;
-  letter-spacing: 0.01em;
+  text-wrap: balance;
 }
 .hero p {
   margin: 0.75rem 0 0;
@@ -99,16 +111,30 @@ main {
   box-shadow: var(--shadow);
   text-align: center;
   text-decoration: none;
-  transition: box-shadow 200ms var(--ease), translate 200ms var(--ease), scale 150ms var(--ease);
+  position: relative;
+  transition: translate 200ms var(--ease), scale 150ms var(--ease);
+}
+/* 影は box-shadow を直接アニメせず、重ねた疑似要素の opacity で出し入れする */
+.tool::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  transition: opacity 200ms var(--ease);
+  pointer-events: none;
 }
 @media (hover: hover) {
-  .tool:hover { box-shadow: var(--shadow-hover); translate: 0 -2px; }
+  .tool:hover { translate: 0 -2px; }
+  .tool:hover::after { opacity: 1; }
 }
 .tool:active { scale: 0.98; }
 
 .icon { border-radius: 14px; }
 .name {
   margin-top: 1rem;
+  overflow-wrap: anywhere;
   font-weight: 700;
   font-size: 1.0625rem;
 }
@@ -117,6 +143,7 @@ main {
   color: var(--muted);
   font-size: 0.8125rem;
   line-height: 1.6;
+  text-wrap: pretty;
 }
 
 .foot {
@@ -131,5 +158,5 @@ main {
 .foot a:hover { color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
-  .tool { transition: none; }
+  .tool, .tool::after { transition: none; }
 }
