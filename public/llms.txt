@@ -1,0 +1,7 @@
+# iatosh tools
+
+> ブラウザで動く小さなツール集。インストール不要・無料。作者は Satoshi Imamura（https://iatosh.com/）。
+
+## Tools
+
+- [証明写真メーカー](https://tools.iatosh.com/id-photo-maker/): 手持ちの写真から履歴書・パスポート・マイナンバーなどの証明写真シートを作り、コンビニのL判プリント（約30円）で印刷できる。写真はサーバーに送信されず、ブラウザ内で処理される。ソースコード: https://github.com/iatosh/id-photo-maker
