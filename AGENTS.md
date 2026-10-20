@@ -4,7 +4,8 @@ Tool index page for https://tools.iatosh.com/. Static files only, no build step.
 
 ## Layout
 
-- `public/index.html`: tool list. UI text Japanese. Style matches iatosh.com (`public/style.css`, same palette and fonts).
+- `public/index.html`: tool list. UI text Japanese. App-launcher style: centered grid of icon cards (like 123apps / pdf24). Not tied to iatosh.com portfolio design.
+- `public/icons/<tool>.svg`: card icon, copy of each tool's favicon. `public/favicon.svg`: hub icon (2×2 grid).
 - `public/robots.txt`, `public/sitemap.xml`: SEO for whole host. Each tool page URL goes in `sitemap.xml`.
 - `public/llms.txt`: site summary for LLMs (llms.txt proposal). One line per tool.
 - `public/404.html`: served for unknown paths (`not_found_handling: 404-page`).
@@ -14,7 +15,7 @@ Tool index page for https://tools.iatosh.com/. Static files only, no build step.
 
 - Each tool lives in own repo, own Worker, route `tools.iatosh.com/<tool>*` (zone `iatosh.com`). Routes beat this Custom Domain on same host.
 - Tool assets must sit under `<tool>/` in its asset directory (Workers static assets match full request path).
-- Add new tool: card in `index.html`, URL in `sitemap.xml`, line in `llms.txt`, line in `README.md`.
+- Add new tool: card in `index.html` + icon in `public/icons/`, URL in `sitemap.xml`, line in `llms.txt`, line in `README.md`.
 
 ## Deploy
 
