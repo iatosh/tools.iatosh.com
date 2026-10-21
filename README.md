@@ -5,4 +5,4 @@ https://tools.iatosh.com/ のツール一覧ページです。
 
 各ツールは別リポジトリで、`tools.iatosh.com/<ツール名>*` のルートで配信されます。
 
-- [id-photo-maker](https://github.com/iatosh/id-photo-maker)：5秒で作る証明写真
+- [id-photo-maker](https://github.com/iatosh/id-photo-maker)：証明写真メーカー
