@@ -1,6 +1,6 @@
 # iatosh tools
 
-> ブラウザで動く小さなツール集。インストール不要・無料。作者は Satoshi Imamura（https://iatosh.com/）。
+> ブラウザで動く小さなツール集。インストール不要・無料。作者はSatoshi Imamura（https://iatosh.com/）。
 
 ## Tools
 
